@@ -1,6 +1,6 @@
-# grunt-init-node
+# grunt-init-node-mocha-chai-sinon
 
-> Create a Node.js module with [grunt-init][], including Nodeunit unit tests.
+> Create a Node.js module with grunt-init, including mocha test with the chai assertion library and the sinon mock library.
 
 [grunt-init]: http://gruntjs.com/project-scaffolding
 
@@ -10,7 +10,7 @@ If you haven't already done so, install [grunt-init][].
 Once grunt-init is installed, place this template in your `~/.grunt-init/` directory. It's recommended that you use git to clone this template into that directory, as follows:
 
 ```
-git clone git@github.com:gruntjs/grunt-init-node.git ~/.grunt-init/node
+git clone git@github.com:benjanecke/grunt-init-node-mocha-chai-sinon.git ~/.grunt-init/node
 ```
 
 _(Windows users, see [the documentation][grunt-init] for the correct destination directory path)_
