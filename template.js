@@ -1,15 +1,16 @@
 /*
- * grunt-init-node
+ * grunt-init-node-mocha-chai-sinon
  * https://gruntjs.com/
  *
- * Copyright (c) 2013 "Cowboy" Ben Alman, contributors
+ * Copyright (c) 2013 Ben Janecke
+ * This would not be possible without "Cowboy" Ben Alman
  * Licensed under the MIT license.
  */
 
 'use strict';
 
 // Basic template description.
-exports.description = 'Create a Node.js module, including Nodeunit unit tests.';
+exports.description = 'Create a Node.js module with grunt-init, including mocha test with the chai assertion library and the sinon mock library.';
 
 // Template-specific notes to be displayed before question prompts.
 exports.notes = '_Project name_ shouldn\'t contain "node" or "js" and should ' +
@@ -43,7 +44,7 @@ exports.template = function(grunt, init, done) {
     init.prompt('author_url'),
     init.prompt('node_version', '>= 0.8.0'),
     init.prompt('main'),
-    init.prompt('npm_test', 'grunt nodeunit'),
+    init.prompt('npm_test', 'grunt mochaTest'),
     {
       name: 'travis',
       message: 'Will this project be tested with Travis CI?',
@@ -53,9 +54,15 @@ exports.template = function(grunt, init, done) {
   ], function(err, props) {
     props.keywords = [];
     props.devDependencies = {
-      'grunt-contrib-jshint': '~0.6.4',
-      'grunt-contrib-nodeunit': '~0.2.0',
-      'grunt-contrib-watch': '~0.5.3',
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-watch": "~0.5.3 ",
+    "grunt-mocha-test": "~0.7.0",
+    "mocha": "~1.13.0",
+    "chai": "~1.8.0",
+    "sinon-chai": "~2.4.0",
+    "sinon": "1.7.3",
+    "jshint": "~2.1.11"
     };
     props.travis = /y/i.test(props.travis);
 

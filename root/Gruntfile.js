@@ -1,48 +1,56 @@
 'use strict';
 
 module.exports = function(grunt) {
+  var files;
+
+  files = {
+    gruntfile: 'Gruntfile.js',
+    jshintrc: '.jshintrc',
+    tests: [ 'test/**/*.js', 'test/**/**/*.js' ],
+    lib: [ 'lib/**/*.js', 'lib/**/**/*.js' ],
+    lib_test: [].contcat(this.tests, this.lib)
+  };
 
   // Project configuration.
   grunt.initConfig({
-    nodeunit: {
-      files: ['test/**/*_test.js'],
-    },
     jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
+      options: files.jshintrc,
       gruntfile: {
-        src: 'Gruntfile.js'
+        src: files.gruntfile
       },
-      lib: {
-        src: ['lib/**/*.js']
-      },
-      test: {
-        src: ['test/**/*.js']
-      },
+      lib_test: {
+        src: files.lib_test
+      }
     },
     watch: {
       gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
+        files: '<%= files.gruntfile %>',
         tasks: ['jshint:gruntfile']
       },
-      lib: {
-        files: '<%= jshint.lib.src %>',
-        tasks: ['jshint:lib', 'nodeunit']
-      },
-      test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'nodeunit']
-      },
+      lib_test: {
+        files: '<%= files.lib_test %>',
+        tasks: ['jshint:lib_test', 'mochaTest']
+      }
     },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          require: [
+            "./test/test-setup"
+          ]
+        },
+        src: files.tests
+      }
+    }
   });
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit']);
+  grunt.registerTask('default', ['jshint', 'mochaTest']);
 
 };
