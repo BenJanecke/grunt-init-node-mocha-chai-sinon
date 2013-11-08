@@ -20,7 +20,7 @@ _(Windows users, see [the documentation][grunt-init] for the correct destination
 At the command-line, cd into an empty directory, run this command and follow the prompts.
 
 ```
-grunt-init grunt-init-node-mocha-chai-sinon
+grunt-init node-mocha-chai-sinon
 ```
 
 _Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files._

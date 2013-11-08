@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     jshintrc: '.jshintrc',
     tests: [ 'test/**/*.js', 'test/**/**/*.js' ],
     lib: [ 'lib/**/*.js', 'lib/**/**/*.js' ],
-    lib_test: [].contcat(this.tests, this.lib)
+    lib_test: [].concat(this.tests, this.lib)
   };
 
   // Project configuration.
