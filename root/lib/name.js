@@ -7,7 +7,11 @@
  */
 
 'use strict';
+var main = (function main () {
+  var parseArgs = require('parse-args');
+  parseArgs(arguments, function (args, next) {
+    next();
+  });
+})();
 
-exports.awesome = function() {
-  return 'awesome';
-};
+module.exports = main;
