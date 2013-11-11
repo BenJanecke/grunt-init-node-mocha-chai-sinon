@@ -1,34 +1,47 @@
-'use strict';
-
+/*global module:false*/
 module.exports = function(grunt) {
-  var files;
-
-  files = {
-    gruntfile: 'Gruntfile.js',
-    jshintrc: '.jshintrc',
-    tests: [ 'test/**/*.js', 'test/**/**/*.js' ],
-    lib: [ 'lib/**/*.js', 'lib/**/**/*.js' ],
-    lib_test: [].concat(this.tests, this.lib)
-  };
-
   // Project configuration.
   grunt.initConfig({
+    // Task configuration.
     jshint: {
-      options: files.jshintrc,
+      options: {
+        curly: false,
+        eqeqeq: true,
+        immed: false,
+        latedef: true,
+        laxcomma: true,
+        newcap: true,
+        noarg: true,
+        sub: true,
+        undef: true,
+        unused: true,
+        boss: true,
+        eqnull: true,
+        node: true,
+        globals: {
+          "before": true,
+          "request": true,
+          "describe": true,
+          "it": true,
+          "expect": true,
+          "chai": true,
+          "db": true
+        }
+      },
       gruntfile: {
-        src: files.gruntfile
+        src: 'Gruntfile.js'
       },
       lib_test: {
-        src: files.lib_test
+        src: ['lib/**/*.js', 'lib/**/**/*.js', 'test/**/*.js', 'test/**/**/*.js']
       }
     },
     watch: {
       gruntfile: {
-        files: '<%= files.gruntfile %>',
+        files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
       lib_test: {
-        files: '<%= files.lib_test %>',
+        files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'mochaTest']
       }
     },
@@ -40,7 +53,7 @@ module.exports = function(grunt) {
             "./test/test-setup"
           ]
         },
-        src: files.tests
+        src: ['test/**/*.js']
       }
     }
   });
