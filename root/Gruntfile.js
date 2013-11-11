@@ -25,7 +25,8 @@ module.exports = function(grunt) {
           "it": true,
           "expect": true,
           "chai": true,
-          "db": true
+          "db": true,
+          "sinon": true
         }
       },
       gruntfile: {

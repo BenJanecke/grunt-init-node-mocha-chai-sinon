@@ -20,14 +20,10 @@ var parseArgs = function parseArgs (args, next) {
   hasArgs = args.length > 1;
 
   // The callback will always be the last object in the arguments or a noop
-  callback = hasArgs
-              ? args[args.length]
-              : noop;
+  callback = hasArgs ? args[args.length] : noop;
 
   // Get the args without the callback
-  args = hasArgs
-          ? args.slice(0, args.length - 1)
-          : [];
+  args = hasArgs ? args.slice(0, args.length - 1) : [];
 
   // Ensure that callback is a function
   if (typeof(callback) !== 'function') callback = noop;
