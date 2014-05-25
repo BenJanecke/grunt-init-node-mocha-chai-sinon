@@ -6,12 +6,8 @@
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
 
-'use strict';
-var main = (function main () {
-  var parseArgs = require('./parse-args');
-  parseArgs(arguments, function (args, next) {
-    next();
-  });
-})();
+function {% name %}(next) {
+  next(undefined);
+};
 
-module.exports = main;
+module.exports = {% name %};

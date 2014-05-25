@@ -54,15 +54,10 @@ exports.template = function(grunt, init, done) {
   ], function(err, props) {
     props.keywords = [];
     props.devDependencies = {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.7.1",
-    "grunt-contrib-watch": "~0.5.3 ",
-    "grunt-mocha-test": "~0.7.0",
-    "mocha": "~1.13.0",
-    "chai": "~1.8.0",
-    "sinon-chai": "~2.4.0",
-    "sinon": "1.7.3",
-    "jshint": "~2.1.11"
+    "mocha": "~1.18.2",
+    "chai": "~1.9.1",
+    "sinon": "~1.9.0",
+    "sinon-chai": "~2.5.0"
     };
     props.travis = /y/i.test(props.travis);
 
