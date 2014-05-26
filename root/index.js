@@ -1,3 +1,3 @@
-var filesystem = require('./lib/{% name %}');
+var filesystem = require('./lib/{%= name %}');
 
-module.exports = {% name %};
+module.exports = {%= name %};
